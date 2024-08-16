@@ -10,7 +10,15 @@
   
   "author": "Nayan Dhawan",
   "license": "ISC",
-  
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nayan156/Dashboard.git"
+  },
+
+  "bugs": {
+    "url": "https://github.com/Nayan156/Dashboard/issues"
+  },
+  "homepage": "https://github.com/Nayan156/Dashboard#readme",
   "devDependencies": {
     "@babel/core": "^7.22.9",
     "@babel/preset-env": "^7.22.9",
