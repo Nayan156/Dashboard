@@ -2,6 +2,7 @@ import Header from "./src/Components/Header";
 import Body from "./src/Components/Body";
 import { useEffect, useState } from "react";
 import FullHeightDialog from "./src/Components/FullHeightDialog";
+import { DataContextProvider } from "./src/context/context";
 
 const App = () => {
     const [open, setOpen] = useState(false);
@@ -23,11 +24,11 @@ const App = () => {
 
     return(
         <div className="app">
-            <div className="">
-            <Header />
-            </div>
-            <Body addWidget={handleClickOpen} setDialogCategoryID={setDialogCategoryID}/>
-            <FullHeightDialog open={open} onClose={handleClose} dialogCategoryID={dialogCategoryID}/>
+          <DataContextProvider>
+              <Header />
+              <Body addWidget={handleClickOpen} setDialogCategoryID={setDialogCategoryID}/>
+              <FullHeightDialog open={open} onClose={handleClose} dialogCategoryID={dialogCategoryID}/>
+          </DataContextProvider>  
         </div>
     )
 }

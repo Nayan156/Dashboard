@@ -7,9 +7,9 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import CSPMAddWidget from './CSPMAddWidget';
-import CWPPAddWidget from './CWPPAddWidget';
-import RegistoryAddWidget from './RegistoryAddWidget';
+import CSPMAddWidget from './categoryWidgetAdd/CSPMAddWidget';
+import CWPPAddWidget from './categoryWidgetAdd/CWPPAddWidget';
+import RegistoryAddWidget from './categoryWidgetAdd/RegistoryAddWidget';
 
 // Custom styles for the Dialog
 const CustomDialog = styled(Dialog)(({ theme }) => ({

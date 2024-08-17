@@ -1,15 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts/hooks';
 import { styled } from '@mui/material/styles';
-import PieChartComponent from './PieChartComponent';
 import ShimmerCard from './ShimmerCard';
+import DataContext from '../context/context';
+import axios from 'axios';
 
-const WidgetCard = ({dataValue}) =>{
+const WidgetCard = ({dataValue , category}) =>{
 
     const [data, setData] = useState([]);
-    const [legend, setLegend] = useState(false);
     const [total, setTotal] = useState(0);
+    const dataContext = useContext(DataContext);
+    const didAPICall = dataContext.didAPICall;
+    const setDidAPICall = dataContext.setDidAPICall;
 
     useEffect(()=>{
         setData(dataValue.data);
@@ -17,9 +20,20 @@ const WidgetCard = ({dataValue}) =>{
             setLegend(true);
         }
         setTotal(dataValue.data.reduce((total, obj)=>{
-            return total + obj.value;
+            return total + Number(obj.value);
         },0))
     },[])
+
+    const handleChangeVissible = async (data) => {
+      try{const result = await axios.put('http://localhost:3000/'+category+'/'+data.id, {
+            ...data,
+            "isVisible": !data.isVisible
+      })
+      if(result.status === 200) setDidAPICall(!didAPICall);}
+      catch(err){
+        console.log(err);
+      }
+    }
 
     const size = {
         width: 400,
@@ -60,11 +74,11 @@ const WidgetCard = ({dataValue}) =>{
     //     </div>
     // )
 
-    return(
+    return !dataValue.isVisible?"":(
         <div className="widget-card flex flex-col bg-white rounded-3xl pt-1 h-60 min-w-[450px] max-w-[450px] hover:grow-1">
             <div className='flex justify-between ml-4 mt-1 '>
-              <div className='text-base font-medium'>{dataValue.title}</div>
-              <button className='mr-3'>
+              <div className='text-base font-bold'>{dataValue.title}</div>
+              <button className='mr-3' onClick={()=>{handleChangeVissible(dataValue)}}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
               </svg>
