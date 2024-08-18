@@ -9,6 +9,7 @@
 - use "npm run dev" command to run whole project (both Json server and react-app will run together)
 - use "npm start" command to run only the react-app
 - use "npm run json" command to run only the json-server 
+  npm run dev
 
 ## State Management Tool used: 
 - Context API
