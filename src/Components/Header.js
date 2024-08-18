@@ -29,9 +29,8 @@ const Header = () => {
 
     return(
         <div className="header flex flex-row mt-2 px-5 justify-between bg-white h-11 border-b-2">
-            <div className="current-page p-1">
-                {/* Home {">"}  */}
-                <Link to='/' onClick={()=>{setBreadCrumbs(false)}}> Dashboard </Link>
+            <div className="current-page p-1 text-bold">
+                <Link to='/' onClick={()=>{setBreadCrumbs(false)}}>Home {">"}  Dashboard </Link>
                 {breadCrumbs?"> Search":""}
             </div>
             <div className="search relative">
