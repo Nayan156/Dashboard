@@ -16,7 +16,7 @@ const Body = ({addWidget , setDialogCategoryID}) => {
     const setDidAPICall = dataContext.setDidAPICall
 
     return(
-        <div className="body bg-slate-100 h-full w-screen pl-10 pr-1 pb-4">
+        <div className="body bg-slate-100 h-full min-h-screen w-screen pl-10 pr-1 pb-4">
             {/* Dashboard Header */}
             <div className="flex justify-between py-5">
             <div className="text-xl font-bold">CNAPP Dashboard</div>
@@ -46,13 +46,13 @@ const Body = ({addWidget , setDialogCategoryID}) => {
             <div className="dashboard-body">
             <div className="pl-2 pt-3 text-xl font-bold">{CSPM.title}</div>
             <div className="widget-container flex gap-2 overflow-x-scroll no-scrollbar py-3">
-                {CSPM.data.map((value)=> <div key={value.id}><WidgetCard dataValue={value} category={'CSPM'}/></div>)}
+                {CSPM.data.map((value)=> <div key={value.id}><WidgetCard dataValue={value} category={CSPM.category}/></div>)}
                 <AddWidgetCard addWidget={addWidget} id={CSPM.id} setDialogCategoryID={setDialogCategoryID}/>
             </div>
 
             <div className="pl-2 pt-3 text-xl font-bold">{CWPP.title}</div>
             <div className="widget-container flex gap-2 overflow-x-scroll no-scrollbar py-3">
-                {CWPP.data.map((value)=> <div key={value.id}><WidgetCard dataValue={value} category={'CWPP'}/></div>)}
+                {CWPP.data.map((value)=> <div key={value.id}><WidgetCard dataValue={value} category={CWPP.category}/></div>)}
                 <AddWidgetCard addWidget={addWidget} id={CWPP.id} setDialogCategoryID={setDialogCategoryID}/>
             </div>
 

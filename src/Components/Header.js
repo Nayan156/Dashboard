@@ -1,18 +1,46 @@
+import { Link, useNavigate } from "react-router-dom";
+import DataContext from "../context/context";
+import { useContext, useState } from "react";
+
 const Header = () => {
+    const dataContext = useContext(DataContext);
+    const searchText = dataContext.searchText;
+    const setSeachText = dataContext.setSeachText;
+    const [localSearchText, setLocalSearchText] = useState('')
+    const [breadCrumbs, setBreadCrumbs] = useState(false)
+    const navigate = useNavigate();
+
+    const onChange = (e) => {
+        setLocalSearchText(e.target.value);
+    }
+
+    const onSubmit = () => {
+        setSeachText(localSearchText);
+        navigate('/search');
+        setLocalSearchText('');
+        setBreadCrumbs(true)
+    }
+
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          onSubmit();
+        }
+    };
+
     return(
         <div className="header flex flex-row mt-2 px-5 justify-between bg-white h-11 border-b-2">
             <div className="current-page p-1">
-                {"Home > Dashboard"}
+                {/* Home {">"}  */}
+                <Link to='/' onClick={()=>{setBreadCrumbs(false)}}> Dashboard </Link>
+                {breadCrumbs?"> Search":""}
             </div>
             <div className="search relative">
-                <input className="border border-slate-300 rounded-md w-[500px] pl-10 pr-4 py-1 mr-2 bg-slate-100" placeholder="Search anything..." type="text" />
-                <div className="absolute inset-y-0 left-0 pl-3 pb-1.5
-                    flex items-center  
-                    pointer-events-none"> 
+                <input className="border border-slate-300 rounded-md w-[500px] pl-10 pr-4 py-1 mr-2 bg-slate-100" placeholder="Search anything..." type="text" onKeyDown={handleKeyDown} onChange={(e)=>{onChange(e)}} value={localSearchText}/>
+                <button className="absolute inset-y-0 left-0 pl-3 pb-1.5 flex items-center hover:cursor-pointer" onClick={onSubmit}> 
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-5">
                       <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                     </svg>
-                </div>
+                </button>
             </div>
             <div className="profile p-1 mr-1">
                 {/* Your Profile */}

@@ -7,22 +7,27 @@ export const DataContextProvider = ({ children }) => {
     const [CSPM, setCSPM] = useState({
         id: "1",
         title: 'CSPM Executive Dashboard',
+        category: "CSPM",
         data: []
     })
 
     const [CWPP, setCWPP] = useState({
         id: '2',
         title: 'CWPP Dashboard',
+        category: "CWPP",
         data: []
     })
 
     const [Registory, setRegistory] = useState({
         id: '3',
         title: 'Registory Scan',
+        category: "Registory",
         data: []
     })
 
     const [didAPICall, setDidAPICall] = useState(false)
+
+    const [searchText, setSeachText] = useState("");
 
     useEffect(()=>{
         fetchDataCSPM();
@@ -59,7 +64,9 @@ export const DataContextProvider = ({ children }) => {
         CWPP,
         Registory,
         didAPICall,
-        setDidAPICall
+        setDidAPICall,
+        searchText,
+        setSeachText
     }
 
     return(

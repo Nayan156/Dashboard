@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": " parcel index.html",
-    "json": "json-server --watch db.json --port 3000"
+    "json": "json-server --watch db.json --port 3000",
+    "dev": "npm-run-all --parallel start json"
   },
   "author": "Nayan Dhawan",
   "license": "ISC",
@@ -42,8 +43,10 @@
     "axios": "^1.7.4",
     "chart.js": "^4.4.3",
     "json-server": "^1.0.0-beta.1",
+    "npm-run-all": "^4.1.5",
     "react": "^18.3.1",
     "react-chartjs-2": "^5.2.0",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.1"
   }
 }

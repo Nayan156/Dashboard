@@ -18,7 +18,7 @@ const BulletChart = ({dataValue}) => {
     },[])
 
     const handleChangeVissible = async (data) => {
-        try {const result = await axios.put('http://localhost:3000/Registory'+data.id, {
+        try {const result = await axios.put('http://localhost:3000/Registory/'+data.id, {
               ...data,
               "isVisible": !data.isVisible
         })
