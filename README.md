@@ -2,7 +2,7 @@
 
 ## Installation:
 - Clone the repository
-- open terminal and run "npm install"
+- open terminal and install all dependencies by running "npm install" command
 
 ## Install Dependencies Command
     npm install
@@ -13,8 +13,14 @@
 - use "npm start" command to run only the react-app
 - use "npm run json" command to run only the json-server 
 
-## Run Command
+## Whole Project Run Command
     npm run dev
+
+## Frontend PORT
+    http://localhost:1234/
+
+## JSON-Server PORT
+    http://localhost:3000/
 
 ## State Management Tool used: 
 - Context API
@@ -30,4 +36,12 @@
 - A new Widget with random data can also be added
 - A widget can also be permanently removed from category
 - Searching widget can be done through search bar in header
-- To get beack to Dasboard page click on "Dashboar" in header
+- To get beack to Dasboard page click on "Dashboard" in header
+
+## Tech Used
+- Parcel
+- Babel
+- Tailwind Css
+- Material UI 
+- Chart.js
+- Context API
